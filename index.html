@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giraffe V1.0 — Direct Gemini-to-CAD Execution via Model Context Protocol</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ==========================================================================
+           GIRAFFE SWISS INTERNATIONAL GRID SYSTEM — 100% NATIVE ROCK-SOLID CSS
+           Palette: Crisp White (#FFFFFF), Rich Dark (#1A1A1A), Core Cyber (#0046FF)
+           Zero Gradients, Zero Shadows, Zero Monospace Fonts
+           ========================================================================== */
+        :root {
+            --white: #FFFFFF;
+            --surface: #F7F7F7;
+            --dark: #1A1A1A;
+            --muted: #555555;
+            --cyber: #0046FF;
+            --hairline: #D8D8D8;
+            --font-swiss: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            background-color: var(--white);
+            color: var(--dark);
+            font-family: var(--font-swiss);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            background-color: var(--white);
+            color: var(--dark);
+            font-family: var(--font-swiss);
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            font-family: var(--font-swiss);
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        /* STRUCTURAL CONTAINER & GRID LINES */
+        .page-shell {
+            width: 100%;
+            max-width: 1380px;
+            margin: 0 auto;
+            border-left: 1.5px solid var(--dark);
+            border-right: 1.5px solid var(--dark);
+            background-color: var(--white);
+            flex: 1;
+        }
+
+        /* TOP STRUCTURAL HEADER BAR */
+        .top-index-bar {
+            width: 100%;
+            background-color: var(--surface);
+            border-bottom: 1px solid var(--dark);
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .top-index-inner {
+            max-width: 1380px;
+            margin: 0 auto;
+            padding: 10px 32px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            border-left: 1.5px solid var(--dark);
+            border-right: 1.5px solid var(--dark);
+        }
+
+        .main-header {
+            position: sticky;
+            top: 0;
+            z-index: 40;
+            background-color: var(--white);
+            border-bottom: 1.5px solid var(--dark);
+        }
+
+        .main-header-inner {
+            max-width: 1380px;
+            margin: 0 auto;
+            padding: 0 32px;
+            height: 72px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-left: 1.5px solid var(--dark);
+            border-right: 1.5px solid var(--dark);
+        }
+
+        .brand-lockup {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .brand-lockup svg {
+            width: 34px;
+            height: 34px;
+            display: block;
+        }
+
+        .brand-wordmark {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            color: var(--dark);
+        }
+
+        .brand-badge {
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            background-color: var(--cyber);
+            color: var(--white);
+            padding: 3px 8px;
+            margin-left: 4px;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-link {
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--dark);
+            transition: color 0.15s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--cyber);
+        }
+
+        .nav-cta {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            background-color: var(--dark);
+            color: var(--white);
+            padding: 12px 20px;
+            transition: background-color 0.15s ease;
+        }
+
+        .nav-cta:hover {
+            background-color: var(--cyber);
+        }
+
+        /* HERO SECTION */
+        .hero-section {
+            display: grid;
+            grid-template-columns: 7fr 5fr;
+            border-bottom: 1.5px solid var(--dark);
+        }
+
+        .hero-left {
+            padding: 72px 48px;
+            border-right: 1px solid var(--dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .eyebrow-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--cyber);
+            margin-bottom: 24px;
+        }
+
+        .eyebrow-dot {
+            width: 8px;
+            height: 8px;
+            background-color: var(--cyber);
+            display: inline-block;
+        }
+
+        .hero-title {
+            font-size: clamp(48px, 6vw, 76px);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 0.98;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .hero-subtitle {
+            font-size: clamp(22px, 2.6vw, 32px);
+            font-weight: 800;
+            letter-spacing: -0.025em;
+            line-height: 1.15;
+            color: var(--dark);
+            margin-bottom: 28px;
+            max-width: 680px;
+        }
+
+        .cyber-bar {
+            width: 100%;
+            max-width: 440px;
+            height: 8px;
+            background-color: var(--cyber);
+            margin-bottom: 28px;
+        }
+
+        .hero-description {
+            font-size: 17px;
+            font-weight: 500;
+            color: var(--muted);
+            max-width: 580px;
+            line-height: 1.65;
+            margin-bottom: 40px;
+        }
+
+        .hero-description strong {
+            color: var(--dark);
+            font-weight: 700;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .btn-primary-cyber {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--cyber);
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 18px 32px;
+            border: 1.5px solid var(--cyber);
+            cursor: pointer;
+            transition: background-color 0.15s ease, border-color 0.15s ease;
+        }
+
+        .btn-primary-cyber:hover {
+            background-color: var(--dark);
+            border-color: var(--dark);
+        }
+
+        .btn-outline-dark {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--white);
+            color: var(--dark);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 18px 32px;
+            border: 1.5px solid var(--dark);
+            transition: background-color 0.15s ease, color 0.15s ease;
+        }
+
+        .btn-outline-dark:hover {
+            background-color: var(--dark);
+            color: var(--white);
+        }
+
+        .hero-right {
+            padding: 64px 48px;
+            background-color: var(--white);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .floating-logo-wrap {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-logo-svg {
+            width: 240px;
+            height: 248px;
+            display: block;
+        }
+
+        .floating-logo-wordmark {
+            font-size: 64px;
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            line-height: 1;
+            color: var(--dark);
+            margin-top: 12px;
+        }
+
+        /* SECTION HEADERS */
+        .section-block {
+            border-bottom: 1.5px solid var(--dark);
+        }
+
+        .section-header-bar {
+            padding: 28px 48px;
+            background-color: var(--surface);
+            border-bottom: 1px solid var(--dark);
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .section-header-left {
+            display: flex;
+            align-items: baseline;
+            gap: 16px;
+        }
+
+        .section-index {
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+            color: var(--cyber);
+        }
+
+        .section-title {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--dark);
+        }
+
+        .section-subtitle-right {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        /* SECTION 01 // PLATFORMS */
+        .platform-selector-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            border-bottom: 1px solid var(--dark);
+        }
+
+        .platform-btn {
+            padding: 28px 36px;
+            text-align: left;
+            background-color: var(--white);
+            color: var(--dark);
+            border-right: 1px solid var(--dark);
+            transition: background-color 0.15s ease, color 0.15s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .platform-btn:last-child {
+            border-right: none;
+        }
+
+        .platform-btn:hover {
+            background-color: var(--surface);
+        }
+
+        .platform-btn.active {
+            background-color: var(--cyber);
+            color: var(--white);
+        }
+
+        .platform-btn-index {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            opacity: 0.75;
+        }
+
+        .platform-btn-name {
+            font-size: 28px;
+            font-weight: 800;
+            letter-spacing: -0.025em;
+        }
+
+        .platform-btn-meta {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .platform-panel {
+            display: none;
+            grid-template-columns: 5fr 7fr;
+            background-color: var(--white);
+        }
+
+        .platform-panel.active {
+            display: grid;
+        }
+
+        .platform-summary-col {
+            padding: 56px 48px;
+            border-right: 1px solid var(--dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .platform-badge {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--cyber);
+            margin-bottom: 14px;
+        }
+
+        .platform-panel-title {
+            font-size: 38px;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.05;
+            margin-bottom: 14px;
+            color: var(--dark);
+        }
+
+        .platform-panel-sub {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--muted);
+            line-height: 1.5;
+            margin-bottom: 32px;
+        }
+
+        .platform-status-line {
+            padding-top: 20px;
+            border-top: 1px solid var(--hairline);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .status-active-pill {
+            color: var(--cyber);
+        }
+
+        .platform-cards-col {
+            padding: 56px 48px;
+            background-color: var(--surface);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .feature-card {
+            background-color: var(--white);
+            border: 1.5px solid var(--dark);
+            padding: 36px 32px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .feature-card-num {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--cyber);
+            margin-bottom: 16px;
+        }
+
+        .feature-card-title {
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: var(--dark);
+            margin-bottom: 12px;
+        }
+
+        .feature-card-desc {
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--muted);
+            line-height: 1.6;
+        }
+
+        /* SECTION 02 // LICENSING & DOWNLOAD */
+        .licensing-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .license-edu-col {
+            padding: 64px 48px;
+            border-right: 1px solid var(--dark);
+            background-color: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .license-commercial-col {
+            padding: 64px 48px;
+            background-color: var(--dark);
+            color: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .tier-pill {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            background-color: var(--surface);
+            border: 1px solid var(--dark);
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .tier-pill-cyber {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            padding: 5px 12px;
+            background-color: var(--cyber);
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .license-title {
+            font-size: 34px;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            margin-bottom: 18px;
+        }
+
+        .license-desc {
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 1.65;
+            margin-bottom: 36px;
+            color: var(--muted);
+        }
+
+        .license-commercial-col .license-desc {
+            color: #CCCCCC;
+        }
+
+        .btn-full-dark {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: var(--dark);
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 20px 24px;
+            cursor: pointer;
+            transition: background-color 0.15s ease;
+        }
+
+        .btn-full-dark:hover {
+            background-color: var(--cyber);
+        }
+
+        .btn-full-cyber {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: var(--cyber);
+            color: var(--white);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            padding: 20px 24px;
+            transition: background-color 0.15s ease, color 0.15s ease;
+        }
+
+        .btn-full-cyber:hover {
+            background-color: var(--white);
+            color: var(--dark);
+        }
+
+        .license-footnote {
+            font-size: 12px;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 14px;
+            color: var(--muted);
+        }
+
+        .license-commercial-col .license-footnote {
+            color: #999999;
+        }
+
+        /* FOOTER */
+        .ending-bar {
+            width: 100%;
+            background-color: var(--dark);
+            color: var(--white);
+        }
+
+        .ending-cyber-stripe {
+            width: 100%;
+            height: 6px;
+            background-color: var(--cyber);
+        }
+
+        .ending-inner {
+            max-width: 1380px;
+            margin: 0 auto;
+            padding: 28px 32px;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+        }
+
+        .ending-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .ending-brand svg {
+            width: 24px;
+            height: 24px;
+            display: block;
+        }
+
+        .ending-links {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .ending-links a {
+            color: #CCCCCC;
+            cursor: pointer;
+            transition: color 0.15s ease;
+        }
+
+        .ending-links a:hover {
+            color: var(--white);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 1024px) {
+            .hero-section,
+            .platform-panel.active,
+            .licensing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-left,
+            .platform-summary-col,
+            .license-edu-col {
+                border-right: none;
+                border-bottom: 1px solid var(--dark);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .top-index-inner,
+            .main-header-inner,
+            .section-header-bar,
+            .hero-left,
+            .hero-right,
+            .platform-summary-col,
+            .platform-cards-col,
+            .license-edu-col,
+            .license-commercial-col {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .platform-selector-grid,
+            .platform-cards-col {
+                grid-template-columns: 1fr;
+            }
+
+            .platform-btn {
+                border-right: none;
+                border-bottom: 1px solid var(--dark);
+            }
+
+            .platform-btn:last-child {
+                border-bottom: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- TOP STRUCTURAL INDEX BAR -->
+    <div class="top-index-bar">
+        <div class="top-index-inner">
+            <div>GIRAFFE // V1.0 RELEASE</div>
+            <div>MODEL CONTEXT PROTOCOL</div>
+            <div>RHINO / REVIT / 3DS MAX</div>
+        </div>
+    </div>
+
+    <!-- MAIN STICKY HEADER -->
+    <header class="main-header">
+        <div class="main-header-inner">
+            <a href="#" class="brand-lockup" aria-label="Giraffe Home">
+                <svg viewBox="0 0 240 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#1A1A1A" d="M 42 54 H 58 C 64 54 67 57 70 61 C 74 65 81 62 81 56 C 81 52 78 48 73 43 C 67 39 67 30 74 25 C 81 20 91 25 91 34 C 91 39 94 44 98 48 C 103 52 109 49 109 43 C 109 39 104 35 104 28 C 104 20 112 15 120 18 C 127 21 129 30 126 36 C 124 41 128 46 134 46 H 158 C 167 46 172 51 172 60 V 72 C 172 79 176 83 183 83 H 207 C 215 83 220 88 220 95 V 100 C 220 105 224 109 229 109 H 235 C 242 109 246 114 246 121 V 136 C 246 149 235 159 222 159 C 214 159 209 155 205 151 C 201 148 197 147 190 147 H 116 C 107 147 103 151 103 160 V 197 C 103 206 107 210 116 210 H 194 C 201 210 205 206 205 199 V 188 H 165 C 159 188 155 190 150 194 C 146 197 141 198 136 198 C 126 198 118 190 118 180 C 118 170 126 162 136 162 C 141 162 146 164 150 167 C 155 171 159 173 165 173 H 234 C 242 173 246 177 246 185 V 218 C 246 239 231 248 210 248 H 118 C 102 248 93 241 89 229 C 86 220 79 214 69 213 C 58 211 53 203 53 190 V 84 C 53 77 48 73 41 73 H 42 C 34 73 29 68 29 61 V 63 C 29 57 34 54 42 54 Z"/>
+                    <circle cx="73" cy="233" r="15" fill="#1A1A1A" />
+                </svg>
+                <span class="brand-wordmark">Giraffe</span>
+                <span class="brand-badge">V1.0</span>
+            </a>
+
+            <nav class="nav-links">
+                <a href="#platforms" class="nav-link">01 Platforms</a>
+                <a href="#licensing" class="nav-link">02 Download &amp; License</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScXS50uiKBT1N8kgNN2C_0NKcAUOJKzf5XfKlEkRZsIKr1vkA/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="nav-link">Support</a>
+            </nav>
+
+            <a href="#licensing" class="nav-cta">Download V1.0</a>
+        </div>
+    </header>
+
+    <!-- MAIN ARCHITECTURAL GRID CONTAINER -->
+    <main class="page-shell">
+
+        <!-- HERO SECTION -->
+        <section class="hero-section">
+            <div class="hero-left">
+                <div>
+                    <div class="eyebrow-tag">
+                        <span class="eyebrow-dot"></span>
+                        <span>VERSION 1.0 — INITIAL LAUNCH</span>
+                    </div>
+
+                    <h1 class="hero-title">Giraffe.</h1>
+                    <h2 class="hero-subtitle">
+                        Direct Gemini-to-CAD Execution via Model Context Protocol.
+                    </h2>
+
+                    <div class="cyber-bar"></div>
+
+                    <p class="hero-description">
+                        <strong>Giraffe</strong> connects Google Gemini directly to <strong>Rhino</strong>, <strong>Revit</strong>, and <strong>3ds Max</strong> via MCP. Execute geometry, manage scenes, and interact with your design environment through an embedded Ask AI tab with zero API key costs.
+                    </p>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="Giraffe_V1.0.zip" download="Giraffe_V1.0.zip" class="btn-primary-cyber">
+                        DOWNLOAD GIRAFFE V1.0 (.ZIP) ↓
+                    </a>
+                    <a href="#licensing" class="btn-outline-dark">
+                        COMMERCIAL INQUIRY →
+                    </a>
+                </div>
+            </div>
+
+            <div class="hero-right">
+                <div class="floating-logo-wrap">
+                    <svg class="floating-logo-svg" viewBox="0 0 260 265" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Giraffe Solid Mark">
+                        <path fill="#1A1A1A" d="
+                            M 42 54 H 58 C 64 54 67 57 70 61 C 74 65 81 62 81 56 C 81 52 78 48 73 43 C 67 39 67 30 74 25 C 81 20 91 25 91 34 C 91 39 94 44 98 48 C 103 52 109 49 109 43 C 109 39 104 35 104 28 C 104 20 112 15 120 18 C 127 21 129 30 126 36 C 124 41 128 46 134 46 H 158 C 167 46 172 51 172 60 V 72 C 172 79 176 83 183 83 H 207 C 215 83 220 88 220 95 V 100 C 220 105 224 109 229 109 H 235 C 242 109 246 114 246 121 V 136 C 246 149 235 159 222 159 C 214 159 209 155 205 151 C 201 148 197 147 190 147 H 116 C 107 147 103 151 103 160 V 197 C 103 206 107 210 116 210 H 194 C 201 210 205 206 205 199 V 188 H 165 C 159 188 155 190 150 194 C 146 197 141 198 136 198 C 126 198 118 190 118 180 C 118 170 126 162 136 162 C 141 162 146 164 150 167 C 155 171 159 173 165 173 H 234 C 242 173 246 177 246 185 V 218 C 246 239 231 248 210 248 H 118 C 102 248 93 241 89 229 C 86 220 79 214 69 213 C 58 211 53 203 53 190 V 84 C 53 77 48 73 41 73 H 42 C 34 73 29 68 29 61 V 63 C 29 57 34 54 42 54 Z
+                        "/>
+                        <circle cx="73" cy="233" r="15" fill="#1A1A1A" />
+                    </svg>
+                    <div class="floating-logo-wordmark">Giraffe</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 01 // PLATFORMS -->
+        <section id="platforms" class="section-block">
+            <div class="section-header-bar">
+                <div class="section-header-left">
+                    <span class="section-index">01 / PLATFORM UTILITIES</span>
+                    <h2 class="section-title">Select Host Environment</h2>
+                </div>
+                <div class="section-subtitle-right">GEMINI VIA MCP</div>
+            </div>
+
+            <div class="platform-selector-grid" role="tablist">
+                <button type="button" id="btn-rhino" class="platform-btn active" onclick="switchPlatform('rhino')" role="tab" aria-selected="true">
+                    <span id="idx-rhino" class="platform-btn-index">01 / ACTIVE</span>
+                    <span class="platform-btn-name">Rhino</span>
+                    <span class="platform-btn-meta">Gemini via MCP</span>
+                </button>
+
+                <button type="button" id="btn-revit" class="platform-btn" onclick="switchPlatform('revit')" role="tab" aria-selected="false">
+                    <span id="idx-revit" class="platform-btn-index">02</span>
+                    <span class="platform-btn-name">Revit</span>
+                    <span class="platform-btn-meta">Gemini via MCP</span>
+                </button>
+
+                <button type="button" id="btn-max" class="platform-btn" onclick="switchPlatform('max')" role="tab" aria-selected="false">
+                    <span id="idx-max" class="platform-btn-index">03</span>
+                    <span class="platform-btn-name">3ds Max</span>
+                    <span class="platform-btn-meta">Gemini via MCP</span>
+                </button>
+            </div>
+
+            <!-- PANEL 1: RHINO -->
+            <div id="panel-rhino" class="platform-panel active">
+                <div class="platform-summary-col">
+                    <div>
+                        <span class="platform-badge">HOST ENVIRONMENT // RHINO</span>
+                        <h3 class="platform-panel-title">Giraffe for Rhino</h3>
+                        <p class="platform-panel-sub">Embedded Gemini UI — Connected to Gemini via MCP.</p>
+                    </div>
+                    <div class="platform-status-line">
+                        <span>CONNECTION</span>
+                        <span class="status-active-pill">GEMINI VIA MCP</span>
+                    </div>
+                </div>
+
+                <div class="platform-cards-col">
+                    <div class="feature-card">
+                        <div>
+                            <div class="feature-card-num">01 / INTERFACE</div>
+                            <h4 class="feature-card-title">Native Ask AI Tab</h4>
+                            <p class="feature-card-desc">
+                                Embedded Gemini web interface directly inside the Rhino workspace for direct conversational modeling and spatial control via MCP.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div>
+                            <div class="feature-card-num">02 / ACCESS</div>
+                            <h4 class="feature-card-title">Zero API Key Cost</h4>
+                            <p class="feature-card-desc">
+                                Operates directly through your active Gemini session via MCP without paying per-token API key billing.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL 2: REVIT -->
+            <div id="panel-revit" class="platform-panel">
+                <div class="platform-summary-col">
+                    <div>
+                        <span class="platform-badge">HOST ENVIRONMENT // REVIT</span>
+                        <h3 class="platform-panel-title">Giraffe for Revit</h3>
+                        <p class="platform-panel-sub">Embedded Gemini UI — Connected to Gemini via MCP.</p>
+                    </div>
+                    <div class="platform-status-line">
+                        <span>CONNECTION</span>
+                        <span class="status-active-pill">GEMINI VIA MCP</span>
+                    </div>
+                </div>
+
+                <div class="platform-cards-col">
+                    <div class="feature-card">
+                        <div>
+                            <div class="feature-card-num">01 / INTERFACE</div>
+                            <h4 class="feature-card-title">Native Ask AI Tab</h4>
+                            <p class="feature-card-desc">
+                                Direct Gemini interface integrated into your Revit workflow to create, query, and modify BIM elements via MCP.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div>
+                            <div class="feature-card-num">02 / ACCESS</div>
+                            <h4 class="feature-card-title">Zero API Key Cost</h4>
+                            <p class="feature-card-desc">
+                                Operates directly through your active Gemini session via MCP without external API key overhead.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PANEL 3: 3DS MAX -->
+            <div id="panel-max" class="platform-panel">
+                <div class="platform-summary-col">
+                    <div>
+                        <span class="platform-badge">HOST ENVIRONMENT // 3DS MAX</span>
+                        <h3 class="platform-panel-title">Giraffe for 3ds Max</h3>
+                        <p class="platform-panel-sub">Embedded Gemini UI — Connected to Gemini via MCP.</p>
+                    </div>
+                    <div class="platform-status-line">
+                        <span>CONNECTION</span>
+                        <span class="status-active-pill">GEMINI VIA MCP</span>
+                    </div>
+                </div>
+
+                <div class="platform-cards-col">
+                    <div class="feature-card">
+                        <div>
+                            <div class="feature-card-num">01 / INTERFACE</div>
+                            <h4 class="feature-card-title">Native Ask AI Tab</h4>
+                            <p class="feature-card-desc">
+                                Direct Gemini interface inside 3ds Max for scene assembly, modifier control, and geometry execution via MCP.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="feature-card">
+                        <div>
+                            <div class="feature-card-num">02 / ACCESS</div>
+                            <h4 class="feature-card-title">Zero API Key Cost</h4>
+                            <p class="feature-card-desc">
+                                Operates directly through your active Gemini session via MCP with zero API key setup or token fees.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 02 // LICENSING & DOWNLOAD -->
+        <section id="licensing" class="section-block" style="border-bottom: none;">
+            <div class="section-header-bar">
+                <div class="section-header-left">
+                    <span class="section-index">02 / LICENSING &amp; DOWNLOAD</span>
+                    <h2 class="section-title">Usage Tiers &amp; Distribution</h2>
+                </div>
+                <div class="section-subtitle-right">PACKAGE FORMAT: .ZIP</div>
+            </div>
+
+            <div class="licensing-grid">
+                <!-- Educational -->
+                <div class="license-edu-col">
+                    <div>
+                        <span class="tier-pill">FREE — NON-COMMERCIAL</span>
+                        <h3 class="license-title">Educational &amp; Non-Commercial Usage</h3>
+                        <p class="license-desc">
+                            Giraffe V1.0 is completely free for students, academic researchers, educational purposes, and non-commercial personal usage.
+                        </p>
+                    </div>
+
+                    <div>
+                        <a href="Giraffe_V1.0.zip" download="Giraffe_V1.0.zip" class="btn-full-dark">
+                            DOWNLOAD GIRAFFE V1.0 (.ZIP) ↓
+                        </a>
+                        <div class="license-footnote">
+                            Direct archive download (.ZIP) for Rhino, Revit, and 3ds Max.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Commercial -->
+                <div class="license-commercial-col">
+                    <div>
+                        <span class="tier-pill-cyber">COMMERCIAL &amp; ENTERPRISE</span>
+                        <h3 class="license-title">Commercial &amp; Company Usage</h3>
+                        <p class="license-desc">
+                            For architectural firms, design studios, commercial projects, and company deployments, directly contact the creator.
+                        </p>
+                    </div>
+
+                    <div>
+                        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfZGZn1GQO8vPSk4PA_U2UPHw0xe097qCyr-kLCD7ssA7Q4rw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="btn-full-cyber">
+                            CONTACT CREATOR →
+                        </a>
+                        <div class="license-footnote">
+                            Direct inquiry for commercial and company licensing.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="ending-bar">
+        <div class="ending-cyber-stripe"></div>
+        <div class="ending-inner">
+            <div class="ending-brand">
+                <svg viewBox="0 0 240 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path fill="#FFFFFF" d="M 42 54 H 58 C 64 54 67 57 70 61 C 74 65 81 62 81 56 C 81 52 78 48 73 43 C 67 39 67 30 74 25 C 81 20 91 25 91 34 C 91 39 94 44 98 48 C 103 52 109 49 109 43 C 109 39 104 35 104 28 C 104 20 112 15 120 18 C 127 21 129 30 126 36 C 124 41 128 46 134 46 H 158 C 167 46 172 51 172 60 V 72 C 172 79 176 83 183 83 H 207 C 215 83 220 88 220 95 V 100 C 220 105 224 109 229 109 H 235 C 242 109 246 114 246 121 V 136 C 246 149 235 159 222 159 C 214 159 209 155 205 151 C 201 148 197 147 190 147 H 116 C 107 147 103 151 103 160 V 197 C 103 206 107 210 116 210 H 194 C 201 210 205 206 205 199 V 188 H 165 C 159 188 155 190 150 194 C 146 197 141 198 136 198 C 126 198 118 190 118 180 C 118 170 126 162 136 162 C 141 162 146 164 150 167 C 155 171 159 173 165 173 H 234 C 242 173 246 177 246 185 V 218 C 246 239 231 248 210 248 H 118 C 102 248 93 241 89 229 C 86 220 79 214 69 213 C 58 211 53 203 53 190 V 84 C 53 77 48 73 41 73 H 42 C 34 73 29 68 29 61 V 63 C 29 57 34 54 42 54 Z"/>
+                    <circle cx="73" cy="233" r="15" fill="#FFFFFF" />
+                </svg>
+                <span>GIRAFFE V1.0 — GEMINI VIA MCP</span>
+            </div>
+
+            <div class="ending-links">
+                <a href="Giraffe_V1.0.zip" download="Giraffe_V1.0.zip">Download (.ZIP)</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLScXS50uiKBT1N8kgNN2C_0NKcAUOJKzf5XfKlEkRZsIKr1vkA/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Support Form</a>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSfZGZn1GQO8vPSk4PA_U2UPHw0xe097qCyr-kLCD7ssA7Q4rw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Contact Creator</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- PLATFORM SWITCHER JAVASCRIPT -->
+    <script>
+        function switchPlatform(selected) {
+            var platforms = ['rhino', 'revit', 'max'];
+            var numbers = { rhino: '01', revit: '02', max: '03' };
+
+            for (var i = 0; i < platforms.length; i++) {
+                var key = platforms[i];
+                var btn = document.getElementById('btn-' + key);
+                var panel = document.getElementById('panel-' + key);
+                var idx = document.getElementById('idx-' + key);
+
+                if (key === selected) {
+                    btn.classList.add('active');
+                    btn.setAttribute('aria-selected', 'true');
+                    panel.classList.add('active');
+                    idx.textContent = numbers[key] + ' / ACTIVE';
+                } else {
+                    btn.classList.remove('active');
+                    btn.setAttribute('aria-selected', 'false');
+                    panel.classList.remove('active');
+                    idx.textContent = numbers[key];
+                }
+            }
+        }
+    </script>
+</body>
+</html>
