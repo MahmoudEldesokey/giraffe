@@ -72,7 +72,7 @@
             flex: 1;
         }
 
-        /* TOP STRUCTURAL HEADER BAR — FIXED SPACING & 3-COLUMN ALIGNMENT */
+        /* TOP STRUCTURAL HEADER BAR — 3-COLUMN ALIGNMENT */
         .top-index-bar {
             width: 100%;
             background-color: var(--surface);
@@ -108,7 +108,7 @@
             text-align: right;
         }
 
-        /* MAIN STICKY HEADER — CLEAN VERTICAL & HORIZONTAL ALIGNMENT */
+        /* MAIN STICKY HEADER */
         .main-header {
             position: sticky;
             top: 0;
@@ -168,7 +168,7 @@
         .nav-links {
             display: flex;
             align-items: center;
-            gap: 36px;
+            gap: 32px;
         }
 
         .nav-link {
@@ -361,7 +361,6 @@
 
         /* ==========================================================================
            SECTION HEADERS — STACKED LEFT ALIGNMENT & PROPORTIONAL TYPOGRAPHY
-           Fixes "Select Host Environment" oversized / misaligned text issue
            ========================================================================== */
         .section-block {
             border-bottom: 1.5px solid var(--dark);
@@ -573,10 +572,7 @@
         }
 
         /* ==========================================================================
-           SECTION 02 // VIDEO & SETUP DOCUMENTATION
-           Tab 1: Setup & Install (Single Rhino 1 Video Only — GitHub / YouTube Auto-Link)
-           Tab 2: Setup & Installation Guide (8 Exact User Steps)
-           Tab 3: Live Demos (Coming Soon)
+           SECTION 02 // VIDEO DOCUMENTATION (RHINO | REVIT | 3DS MAX COMING SOON)
            ========================================================================== */
         .doc-tab-panel {
             display: none;
@@ -587,7 +583,6 @@
             display: block;
         }
 
-        /* TAB 1: SINGLE CLEAN VIDEO STAGE */
         .single-video-container {
             padding: 48px;
             max-width: 1120px;
@@ -614,17 +609,6 @@
             background-color: var(--cyber);
             color: var(--white);
             padding: 6px 12px;
-        }
-
-        .video-host-badge {
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            padding: 5px 12px;
-            border: 1px solid var(--dark);
-            background-color: var(--surface);
-            color: var(--dark);
         }
 
         .video-frame-shell {
@@ -698,7 +682,7 @@
             color: var(--white);
         }
 
-        /* Fallback Standby Overlay if user hasn't dropped Rhino_1.mp4 or URL yet */
+        /* Standby Overlay when video file isn't mounted yet */
         .video-standby-overlay {
             position: absolute;
             inset: 0;
@@ -808,78 +792,7 @@
             color: #999999;
         }
 
-        /* TAB 2: SETUP & INSTALLATION GUIDE (8 STEPS) */
-        .guide-section-wrap {
-            padding: 48px;
-            background-color: var(--surface);
-        }
-
-        .guide-intro-bar {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-            margin-bottom: 32px;
-            padding-bottom: 20px;
-            border-bottom: 1.5px solid var(--dark);
-        }
-
-        .guide-intro-bar h3 {
-            font-size: 24px;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            color: var(--dark);
-        }
-
-        .guide-intro-bar span {
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--cyber);
-        }
-
-        .steps-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
-        }
-
-        .step-card {
-            background-color: var(--white);
-            border: 1.5px solid var(--dark);
-            padding: 28px 24px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            gap: 18px;
-            min-height: 170px;
-        }
-
-        .step-num-badge {
-            display: inline-flex;
-            align-items: center;
-            justify-content: space-between;
-            width: 100%;
-            font-size: 11px;
-            font-weight: 800;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--cyber);
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--hairline);
-        }
-
-        .step-card-title {
-            font-size: 17px;
-            font-weight: 800;
-            letter-spacing: -0.015em;
-            line-height: 1.35;
-            color: var(--dark);
-        }
-
-        /* TAB 3: LIVE DEMOS — COMING SOON */
+        /* COMING SOON STAGE (3DS MAX) */
         .coming-soon-stage {
             padding: 96px 48px;
             background-color: var(--surface);
@@ -927,7 +840,54 @@
         }
 
         /* ==========================================================================
-           SECTION 03 // LICENSING & DOWNLOAD
+           SECTION 03 // SEPARATE SETUP & INSTALLATION GUIDE (8 STEPS)
+           ========================================================================== */
+        .guide-section-wrap {
+            padding: 48px;
+            background-color: var(--surface);
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .step-card {
+            background-color: var(--white);
+            border: 1.5px solid var(--dark);
+            padding: 28px 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 18px;
+            min-height: 170px;
+        }
+
+        .step-num-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--cyber);
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--hairline);
+        }
+
+        .step-card-title {
+            font-size: 17px;
+            font-weight: 800;
+            letter-spacing: -0.015em;
+            line-height: 1.35;
+            color: var(--dark);
+        }
+
+        /* ==========================================================================
+           SECTION 04 // LICENSING & DOWNLOAD
            ========================================================================== */
         .licensing-grid {
             display: grid;
@@ -1208,8 +1168,9 @@
 
             <nav class="nav-links">
                 <a href="#platforms" class="nav-link">01 Platforms</a>
-                <a href="#demos" class="nav-link">02 Setup &amp; Demos</a>
-                <a href="#licensing" class="nav-link">03 Licensing &amp; Download</a>
+                <a href="#demos" class="nav-link">02 Setup Videos</a>
+                <a href="#guide" class="nav-link">03 Install Guide</a>
+                <a href="#licensing" class="nav-link">04 Licensing &amp; Download</a>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLScXS50uiKBT1N8kgNN2C_0NKcAUOJKzf5XfKlEkRZsIKr1vkA/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer" class="nav-link">Support</a>
             </nav>
 
@@ -1406,80 +1367,75 @@
             </div>
         </section>
 
-        <!-- SECTION 02 // VIDEO DOCUMENTATION & SETUP -->
+        <!-- SECTION 02 // VIDEO DOCUMENTATION (RHINO / REVIT / 3DS MAX COMING SOON) -->
         <section id="demos" class="section-block">
             <div class="section-header-bar">
                 <div class="section-header-left">
                     <span class="section-index">02 / VIDEO DOCUMENTATION</span>
-                    <h2 class="section-title">Setup, Installation &amp; Live Demos</h2>
+                    <h2 class="section-title">Setup &amp; Installation Videos</h2>
                 </div>
-                <div class="section-subtitle-right">RHINO V1.0 // MCP</div>
+                <div class="section-subtitle-right">RHINO / REVIT / 3DS MAX</div>
             </div>
 
-            <!-- 3 CLEAN TABS: 01 SETUP & INSTALL (VIDEO) | 02 SETUP & INSTALLATION GUIDE (STEPS) | 03 LIVE DEMOS (COMING SOON) -->
-            <div class="platform-selector-grid" role="tablist" aria-label="Documentation Tabs">
-                <button type="button" id="doctab-setup" class="platform-btn active" onclick="switchDocTab('setup')" role="tab" aria-selected="true">
-                    <span id="docidx-setup" class="platform-btn-index">01 / ACTIVE</span>
-                    <span class="platform-btn-name">Setup &amp; Install</span>
+            <!-- 3 CLEAN TABS: 01 SETUP & INSTALL RHINO | 02 SETUP & INSTALL REVIT | 03 SETUP & INSTALL 3DS MAX (COMING SOON) -->
+            <div class="platform-selector-grid" role="tablist" aria-label="Setup Video Tabs">
+                <button type="button" id="doctab-rhino" class="platform-btn active" onclick="switchDocTab('rhino')" role="tab" aria-selected="true">
+                    <span id="docidx-rhino" class="platform-btn-index">01 / ACTIVE</span>
+                    <span class="platform-btn-name">Setup &amp; Install Rhino</span>
                     <span class="platform-btn-meta">Rhino 1 Video</span>
                 </button>
 
-                <button type="button" id="doctab-guide" class="platform-btn" onclick="switchDocTab('guide')" role="tab" aria-selected="false">
-                    <span id="docidx-guide" class="platform-btn-index">02</span>
-                    <span class="platform-btn-name">Setup &amp; Installation Guide</span>
-                    <span class="platform-btn-meta">8-Step Walkthrough</span>
+                <button type="button" id="doctab-revit" class="platform-btn" onclick="switchDocTab('revit')" role="tab" aria-selected="false">
+                    <span id="docidx-revit" class="platform-btn-index">02</span>
+                    <span class="platform-btn-name">Setup &amp; Install Revit</span>
+                    <span class="platform-btn-meta">Revit Video</span>
                 </button>
 
-                <button type="button" id="doctab-live" class="platform-btn" onclick="switchDocTab('live')" role="tab" aria-selected="false">
-                    <span id="docidx-live" class="platform-btn-index">03</span>
-                    <span class="platform-btn-name">Live Demos</span>
+                <button type="button" id="doctab-max" class="platform-btn" onclick="switchDocTab('max')" role="tab" aria-selected="false">
+                    <span id="docidx-max" class="platform-btn-index">03</span>
+                    <span class="platform-btn-name">Setup &amp; Install 3ds Max</span>
                     <span class="platform-btn-meta">Coming Soon</span>
                 </button>
             </div>
 
-            <!-- TAB 01: SETUP & INSTALL (SINGLE VIDEO ONLY — GITHUB OR YOUTUBE) -->
-            <div id="docpanel-setup" class="doc-tab-panel active">
+            <!-- TAB 01: SETUP & INSTALL RHINO -->
+            <div id="docpanel-rhino" class="doc-tab-panel active">
                 <div class="single-video-container">
                     <div class="video-meta-top">
-                        <span class="video-track-pill">SETUP &amp; INSTALL // RHINO 1</span>
-                        <span id="video-status-badge" class="video-host-badge">GITHUB / YOUTUBE EMBED</span>
+                        <span class="video-track-pill">SETUP &amp; INSTALL // RHINO</span>
                     </div>
 
-                    <div class="video-frame-shell" id="setup-video-shell">
-                        <!-- Native HTML5 Video (automatically loads Rhino_1.mp4 from GitHub repo or Release URL) -->
-                        <video id="setup-html5-video" controls playsinline preload="metadata" style="display: none;"></video>
+                    <div class="video-frame-shell" id="rhino-video-shell">
+                        <video id="rhino-html5-video" controls playsinline preload="metadata" style="display: none;"></video>
+                        <iframe id="rhino-youtube-iframe" title="Giraffe V1.0 Rhino Setup & Install" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none;"></iframe>
 
-                        <!-- YouTube Embed Iframe (automatically used when a YouTube URL is set) -->
-                        <iframe id="setup-youtube-iframe" title="Giraffe V1.0 Rhino Setup & Install" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none;"></iframe>
-
-                        <!-- Clean Standby Overlay shown only until Rhino_1.mp4 is uploaded to the repo or a URL is pasted -->
-                        <div id="video-standby-overlay" class="video-standby-overlay">
+                        <div id="rhino-standby-overlay" class="video-standby-overlay">
                             <div class="standby-top">
-                                <span>GIRAFFE V1.0 // RHINO 1 SETUP VIDEO</span>
-                                <span>AUTO-LINKS VIA GITHUB OR YOUTUBE</span>
+                                <span>GIRAFFE V1.0 // RHINO SETUP VIDEO</span>
+                                <span>16:9 HD PLAYER</span>
                             </div>
 
                             <div class="standby-center">
-                                <div class="standby-eyebrow">READY FOR YOUR VIDEO UPLOAD</div>
-                                <h3 class="standby-title">Rhino 1 — Setup &amp; Installation Video</h3>
+                                <div class="standby-eyebrow">READY FOR YOUR VIDEO</div>
+                                <h3 class="standby-title">Rhino — Setup &amp; Installation Video</h3>
                                 <p style="font-size: 14px; color: #CCCCCC; line-height: 1.6;">
-                                    Upload your video named <strong>Rhino_1.mp4</strong> directly to your GitHub repository (or paste your GitHub Release / YouTube link below or in <strong>SETUP_VIDEO_URL</strong> inside the code) and it will play here automatically.
+                                    Place your video file named <strong>Rhino_1.mp4</strong> alongside <strong>index.html</strong>, or paste a YouTube / direct .mp4 link below (or in <strong>VIDEO_SOURCES.rhino</strong> inside the code) to load it.
                                 </p>
                                 <div class="standby-input-bar">
                                     <input
                                         type="url"
-                                        id="live-video-url-input"
+                                        id="rhino-video-url-input"
                                         class="standby-url-input"
-                                        placeholder="Paste YouTube URL or GitHub .mp4 link to preview right now..."
+                                        placeholder="Paste YouTube URL or direct .mp4 link to preview..."
                                     />
-                                    <button type="button" class="standby-load-btn" onclick="applyPreviewVideoUrl()">
+                                    <button type="button" class="standby-load-btn" onclick="applyPreviewVideoUrl('rhino')">
                                         LOAD VIDEO →
                                     </button>
                                 </div>
                             </div>
 
                             <div class="standby-bottom">
-                                <span>AUTO-DETECTS: ./Rhino_1.mp4 OR YOUTUBE LINK</span>
+                                <span>DEFAULT FILE: ./Rhino_1.mp4</span>
                                 <span>16:9 FULL HD PLAYER</span>
                             </div>
                         </div>
@@ -1487,113 +1443,173 @@
 
                     <div class="video-bottom-bar">
                         <div class="video-title-lockup">
-                            <h3>Rhino 1 — Complete Setup &amp; MCP Connection</h3>
+                            <h3>Rhino — Complete Setup &amp; MCP Connection</h3>
                             <p>Full video walkthrough covering extraction, installer setup, Rhinoceros 8 plugin loading, and Gemini MCP connection.</p>
                         </div>
                         <div class="video-actions-right">
-                            <button type="button" class="btn-small-switch" onclick="switchDocTab('guide')">
-                                VIEW 8-STEP WRITTEN GUIDE →
-                            </button>
+                            <a href="#guide" class="btn-small-switch">
+                                VIEW 8-STEP WRITTEN GUIDE ↓
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 02: SETUP & INSTALLATION GUIDE (EXACT 8 STEPS) -->
-            <div id="docpanel-guide" class="doc-tab-panel">
-                <div class="guide-section-wrap">
-                    <div class="guide-intro-bar">
-                        <h3>Setup &amp; Installation Guide</h3>
-                        <span>8-STEP CONFIGURATION SEQUENCE</span>
+            <!-- TAB 02: SETUP & INSTALL REVIT -->
+            <div id="docpanel-revit" class="doc-tab-panel">
+                <div class="single-video-container">
+                    <div class="video-meta-top">
+                        <span class="video-track-pill">SETUP &amp; INSTALL // REVIT</span>
                     </div>
 
-                    <div class="steps-grid">
-                        <div class="step-card">
-                            <div class="step-num-badge">
-                                <span>STEP 01</span>
-                                <span>ARCHIVE</span>
-                            </div>
-                            <h4 class="step-card-title">Extracting the Giraffe Plugin Files</h4>
-                        </div>
+                    <div class="video-frame-shell" id="revit-video-shell">
+                        <video id="revit-html5-video" controls playsinline preload="metadata" style="display: none;"></video>
+                        <iframe id="revit-youtube-iframe" title="Giraffe V1.0 Revit Setup & Install" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none;"></iframe>
 
-                        <div class="step-card">
-                            <div class="step-num-badge">
-                                <span>STEP 02</span>
-                                <span>INSTALLER</span>
+                        <div id="revit-standby-overlay" class="video-standby-overlay">
+                            <div class="standby-top">
+                                <span>GIRAFFE V1.0 // REVIT SETUP VIDEO</span>
+                                <span>16:9 HD PLAYER</span>
                             </div>
-                            <h4 class="step-card-title">Running the Setup Installer</h4>
-                        </div>
 
-                        <div class="step-card">
-                            <div class="step-num-badge">
-                                <span>STEP 03</span>
-                                <span>VERIFICATION</span>
+                            <div class="standby-center">
+                                <div class="standby-eyebrow">READY FOR YOUR VIDEO</div>
+                                <h3 class="standby-title">Revit — Setup &amp; Installation Video</h3>
+                                <p style="font-size: 14px; color: #CCCCCC; line-height: 1.6;">
+                                    Place your video file named <strong>Revit_1.mp4</strong> alongside <strong>index.html</strong>, or paste a YouTube / direct .mp4 link below (or in <strong>VIDEO_SOURCES.revit</strong> inside the code) to load it.
+                                </p>
+                                <div class="standby-input-bar">
+                                    <input
+                                        type="url"
+                                        id="revit-video-url-input"
+                                        class="standby-url-input"
+                                        placeholder="Paste YouTube URL or direct .mp4 link to preview..."
+                                    />
+                                    <button type="button" class="standby-load-btn" onclick="applyPreviewVideoUrl('revit')">
+                                        LOAD VIDEO →
+                                    </button>
+                                </div>
                             </div>
-                            <h4 class="step-card-title">Bypassing Windows SmartScreen (Run Anyway)</h4>
-                        </div>
 
-                        <div class="step-card">
-                            <div class="step-num-badge">
-                                <span>STEP 04</span>
-                                <span>WIZARD</span>
+                            <div class="standby-bottom">
+                                <span>DEFAULT FILE: ./Revit_1.mp4</span>
+                                <span>16:9 FULL HD PLAYER</span>
                             </div>
-                            <h4 class="step-card-title">Completing the Setup Wizard</h4>
                         </div>
+                    </div>
 
-                        <div class="step-card">
-                            <div class="step-num-badge">
-                                <span>STEP 05</span>
-                                <span>HOST INIT</span>
-                            </div>
-                            <h4 class="step-card-title">Launching Rhinoceros 8</h4>
+                    <div class="video-bottom-bar">
+                        <div class="video-title-lockup">
+                            <h3>Revit — Complete Setup &amp; MCP Connection</h3>
+                            <p>Full video walkthrough covering extraction, installer setup, Autodesk Revit plugin loading, and Gemini MCP connection.</p>
                         </div>
-
-                        <div class="step-card">
-                            <div class="step-num-badge">
-                                <span>STEP 06</span>
-                                <span>PLUGIN LOAD</span>
-                            </div>
-                            <h4 class="step-card-title">Dragging &amp; Dropping the plugin into Rhino</h4>
-                        </div>
-
-                        <div class="step-card">
-                            <div class="step-num-badge">
-                                <span>STEP 07</span>
-                                <span>CLOUDFLARE MCP</span>
-                            </div>
-                            <h4 class="step-card-title">Copying the Cloudflare MCP URL</h4>
-                        </div>
-
-                        <div class="step-card">
-                            <div class="step-num-badge">
-                                <span>STEP 08</span>
-                                <span>GEMINI LINK</span>
-                            </div>
-                            <h4 class="step-card-title">Connecting the MCP Server in Gemini Settings</h4>
+                        <div class="video-actions-right">
+                            <a href="#guide" class="btn-small-switch">
+                                VIEW 8-STEP WRITTEN GUIDE ↓
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- TAB 03: LIVE DEMOS (COMING SOON ONLY) -->
-            <div id="docpanel-live" class="doc-tab-panel">
+            <!-- TAB 03: SETUP & INSTALL 3DS MAX (COMING SOON) -->
+            <div id="docpanel-max" class="doc-tab-panel">
                 <div class="coming-soon-stage">
                     <div class="coming-soon-box">
-                        <span class="coming-soon-pill">LIVE DEMOS</span>
+                        <span class="coming-soon-pill">3DS MAX // SETUP &amp; INSTALL</span>
                         <h3 class="coming-soon-title">Coming Soon.</h3>
                         <p class="coming-soon-sub">
-                            Real-time unedited Gemini-to-CAD execution videos for Rhino, Revit, and 3ds Max are being prepared for release.
+                            The setup and installation video walkthrough for Giraffe for 3ds Max is currently being prepared for release.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- SECTION 03 // LICENSING & DOWNLOAD -->
+        <!-- SECTION 03 // SEPARATE SETUP & INSTALLATION GUIDE (8 STEPS) -->
+        <section id="guide" class="section-block">
+            <div class="section-header-bar">
+                <div class="section-header-left">
+                    <span class="section-index">03 / INSTALLATION WALKTHROUGH</span>
+                    <h2 class="section-title">Setup &amp; Installation Guide</h2>
+                </div>
+                <div class="section-subtitle-right">8-STEP CONFIGURATION SEQUENCE</div>
+            </div>
+
+            <div class="guide-section-wrap">
+                <div class="steps-grid">
+                    <div class="step-card">
+                        <div class="step-num-badge">
+                            <span>STEP 01</span>
+                            <span>ARCHIVE</span>
+                        </div>
+                        <h4 class="step-card-title">Extracting the Giraffe Plugin Files</h4>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-num-badge">
+                            <span>STEP 02</span>
+                            <span>INSTALLER</span>
+                        </div>
+                        <h4 class="step-card-title">Running the Setup Installer</h4>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-num-badge">
+                            <span>STEP 03</span>
+                            <span>VERIFICATION</span>
+                        </div>
+                        <h4 class="step-card-title">Bypassing Windows SmartScreen (Run Anyway)</h4>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-num-badge">
+                            <span>STEP 04</span>
+                            <span>WIZARD</span>
+                        </div>
+                        <h4 class="step-card-title">Completing the Setup Wizard</h4>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-num-badge">
+                            <span>STEP 05</span>
+                            <span>HOST INIT</span>
+                        </div>
+                        <h4 class="step-card-title">Launching Rhinoceros 8 or Autodesk Revit</h4>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-num-badge">
+                            <span>STEP 06</span>
+                            <span>PLUGIN LOAD</span>
+                        </div>
+                        <h4 class="step-card-title">Loading the Plugin into Rhino or Revit</h4>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-num-badge">
+                            <span>STEP 07</span>
+                            <span>CLOUDFLARE MCP</span>
+                        </div>
+                        <h4 class="step-card-title">Copying the Cloudflare MCP URL</h4>
+                    </div>
+
+                    <div class="step-card">
+                        <div class="step-num-badge">
+                            <span>STEP 08</span>
+                            <span>GEMINI LINK</span>
+                        </div>
+                        <h4 class="step-card-title">Connecting the MCP Server in Gemini Settings</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 04 // LICENSING & DOWNLOAD -->
         <section id="licensing" class="section-block" style="border-bottom: none;">
             <div class="section-header-bar">
                 <div class="section-header-left">
-                    <span class="section-index">03 / ACCESS &amp; PACKAGE</span>
+                    <span class="section-index">04 / ACCESS &amp; PACKAGE</span>
                     <h2 class="section-title">Licensing &amp; Download</h2>
                 </div>
                 <div class="section-subtitle-right">PACKAGE FORMAT: .ZIP</div>
@@ -1657,7 +1673,8 @@
             </div>
 
             <div class="ending-links">
-                <a href="#demos">Setup &amp; Demos</a>
+                <a href="#demos">Setup Videos</a>
+                <a href="#guide">Install Guide</a>
                 <button type="button" onclick="downloadGiraffeZip()">Download (.ZIP)</button>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLScXS50uiKBT1N8kgNN2C_0NKcAUOJKzf5XfKlEkRZsIKr1vkA/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Support Form</a>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSfZGZn1GQO8vPSk4PA_U2UPHw0xe097qCyr-kLCD7ssA7Q4rw/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Contact Creator</a>
@@ -1667,18 +1684,15 @@
 
     <script>
         /* ==========================================================================
-           ★ GITHUB & YOUTUBE AUTOMATIC VIDEO CONFIGURATION ★
+           ★ VIDEO CONFIGURATION ★
            --------------------------------------------------------------------------
-           HOW TO MAKE YOUR VIDEO APPEAR AUTOMATICALLY ON YOUR GITHUB WEBSITE:
-           Option A (Upload directly to your GitHub repo):
-             Simply upload your video file named `Rhino_1.mp4` into the exact same
-             folder as `index.html` in your GitHub repository. You don't even need
-             to edit this line!
-           Option B (YouTube or GitHub Releases Link):
-             Paste your YouTube link (e.g. "https://youtu.be/YOUR_VIDEO_ID") or your
-             GitHub Release .mp4 link inside the quotes below:
+           Place `Rhino_1.mp4` and `Revit_1.mp4` in the same folder as `index.html`,
+           or replace with your YouTube / direct .mp4 URLs below:
            ========================================================================== */
-        var SETUP_VIDEO_URL = "Rhino_1.mp4";
+        var VIDEO_SOURCES = {
+            rhino: "Rhino_1.mp4",
+            revit: "Revit_1.mp4"
+        };
 
         /* ==========================================================================
            00. DIRECT ARCHIVE DOWNLOAD HANDLER
@@ -1720,12 +1734,12 @@
         }
 
         /* ==========================================================================
-           02. DOCUMENTATION TABS SWITCHER
-           (01 Setup & Install Video | 02 Setup & Installation Guide | 03 Live Demos)
+           02. SETUP VIDEO TABS SWITCHER
+           (01 Setup & Install Rhino | 02 Setup & Install Revit | 03 3ds Max Coming Soon)
            ========================================================================== */
         function switchDocTab(selected) {
-            var tabs = ['setup', 'guide', 'live'];
-            var numbers = { setup: '01', guide: '02', live: '03' };
+            var tabs = ['rhino', 'revit', 'max'];
+            var numbers = { rhino: '01', revit: '02', max: '03' };
 
             for (var i = 0; i < tabs.length; i++) {
                 var key = tabs[i];
@@ -1748,16 +1762,15 @@
         }
 
         /* ==========================================================================
-           03. SMART GITHUB & YOUTUBE VIDEO EMBED ENGINE
-           Automatically detects YouTube links, GitHub Release .mp4 URLs, or local
-           repository video files (`Rhino_1.mp4`) and mounts the right player.
+           03. VIDEO EMBED ENGINE (LOCAL MP4 / DIRECT URL / YOUTUBE)
            ========================================================================== */
-        function mountSetupVideo(rawSource) {
+        function mountSetupVideo(prefix, rawSource) {
             var src = (rawSource || '').trim();
-            var videoEl = document.getElementById('setup-html5-video');
-            var iframeEl = document.getElementById('setup-youtube-iframe');
-            var overlayEl = document.getElementById('video-standby-overlay');
-            var badgeEl = document.getElementById('video-status-badge');
+            var videoEl = document.getElementById(prefix + '-html5-video');
+            var iframeEl = document.getElementById(prefix + '-youtube-iframe');
+            var overlayEl = document.getElementById(prefix + '-standby-overlay');
+
+            if (!videoEl || !iframeEl || !overlayEl) return;
 
             if (!src) {
                 videoEl.style.display = 'none';
@@ -1774,12 +1787,10 @@
                 overlayEl.classList.add('hidden');
                 iframeEl.src = 'https://www.youtube.com/embed/' + ytMatch[1] + '?rel=0';
                 iframeEl.style.display = 'block';
-                if (badgeEl) badgeEl.textContent = 'STREAMING VIA YOUTUBE HD';
                 return;
             }
 
-            // 2. Otherwise treat as direct MP4/WebM file (GitHub repo file or GitHub Releases asset URL)
-            // Automatically convert github.com/.../blob/.../.mp4 links into raw streaming links if pasted
+            // 2. Direct MP4/WebM file
             if (src.indexOf('github.com/') !== -1 && src.indexOf('/blob/') !== -1) {
                 src = src.replace('/blob/', '/raw/');
             }
@@ -1793,26 +1804,24 @@
             videoEl.onloadedmetadata = function() {
                 overlayEl.classList.add('hidden');
                 videoEl.style.display = 'block';
-                if (badgeEl) badgeEl.textContent = 'STREAMING VIA GITHUB REPOSITORY';
             };
 
-            // If the default `Rhino_1.mp4` isn't uploaded yet, show the clean standby card
             videoEl.onerror = function() {
                 videoEl.style.display = 'none';
                 overlayEl.classList.remove('hidden');
-                if (badgeEl) badgeEl.textContent = 'READY FOR GITHUB / YOUTUBE LINK';
             };
         }
 
-        function applyPreviewVideoUrl() {
-            var input = document.getElementById('live-video-url-input');
+        function applyPreviewVideoUrl(prefix) {
+            var input = document.getElementById(prefix + '-video-url-input');
             if (input && input.value.trim() !== '') {
-                mountSetupVideo(input.value.trim());
+                mountSetupVideo(prefix, input.value.trim());
             }
         }
 
         window.addEventListener('DOMContentLoaded', function() {
-            mountSetupVideo(SETUP_VIDEO_URL);
+            mountSetupVideo('rhino', VIDEO_SOURCES.rhino);
+            mountSetupVideo('revit', VIDEO_SOURCES.revit);
         });
     </script>
 </body>
