@@ -572,7 +572,7 @@
         }
 
         /* ==========================================================================
-           SECTION 02 // VIDEO DOCUMENTATION (RHINO | REVIT | 3DS MAX COMING SOON)
+           SECTION 02 // VIDEO DOCUMENTATION (RHINO | REVIT | 3DS MAX)
            ========================================================================== */
         .doc-tab-panel {
             display: none;
@@ -792,7 +792,7 @@
             color: #999999;
         }
 
-        /* COMING SOON STAGE (3DS MAX) */
+        /* COMING SOON STAGE (DEPRECATED BUT KEPT FOR STRUCTURE) */
         .coming-soon-stage {
             padding: 96px 48px;
             background-color: var(--surface);
@@ -1367,7 +1367,7 @@
             </div>
         </section>
 
-        <!-- SECTION 02 // VIDEO DOCUMENTATION (RHINO / REVIT / 3DS MAX COMING SOON) -->
+        <!-- SECTION 02 // VIDEO DOCUMENTATION (RHINO / REVIT / 3DS MAX) -->
         <section id="demos" class="section-block">
             <div class="section-header-bar">
                 <div class="section-header-left">
@@ -1377,7 +1377,7 @@
                 <div class="section-subtitle-right">RHINO / REVIT / 3DS MAX</div>
             </div>
 
-            <!-- 3 CLEAN TABS: 01 SETUP & INSTALL RHINO | 02 SETUP & INSTALL REVIT | 03 SETUP & INSTALL 3DS MAX (COMING SOON) -->
+            <!-- 3 CLEAN TABS: 01 SETUP & INSTALL RHINO | 02 SETUP & INSTALL REVIT | 03 SETUP & INSTALL 3DS MAX -->
             <div class="platform-selector-grid" role="tablist" aria-label="Setup Video Tabs">
                 <button type="button" id="doctab-rhino" class="platform-btn active" onclick="switchDocTab('rhino')" role="tab" aria-selected="true">
                     <span id="docidx-rhino" class="platform-btn-index">01 / ACTIVE</span>
@@ -1394,7 +1394,7 @@
                 <button type="button" id="doctab-max" class="platform-btn" onclick="switchDocTab('max')" role="tab" aria-selected="false">
                     <span id="docidx-max" class="platform-btn-index">03</span>
                     <span class="platform-btn-name">Setup &amp; Install 3ds Max</span>
-                    <span class="platform-btn-meta">Coming Soon</span>
+                    <span class="platform-btn-meta">3ds Max Video</span>
                 </button>
             </div>
 
@@ -1512,15 +1512,59 @@
                 </div>
             </div>
 
-            <!-- TAB 03: SETUP & INSTALL 3DS MAX (COMING SOON) -->
+            <!-- TAB 03: SETUP & INSTALL 3DS MAX -->
             <div id="docpanel-max" class="doc-tab-panel">
-                <div class="coming-soon-stage">
-                    <div class="coming-soon-box">
-                        <span class="coming-soon-pill">3DS MAX // SETUP &amp; INSTALL</span>
-                        <h3 class="coming-soon-title">Coming Soon.</h3>
-                        <p class="coming-soon-sub">
-                            The setup and installation video walkthrough for Giraffe for 3ds Max is currently being prepared for release.
-                        </p>
+                <div class="single-video-container">
+                    <div class="video-meta-top">
+                        <span class="video-track-pill">SETUP &amp; INSTALL // 3DS MAX</span>
+                    </div>
+
+                    <div class="video-frame-shell" id="max-video-shell">
+                        <video id="max-html5-video" controls playsinline preload="metadata" style="display: none;"></video>
+                        <iframe id="max-youtube-iframe" title="Giraffe V1.0 3ds Max Setup & Install" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="display: none;"></iframe>
+
+                        <div id="max-standby-overlay" class="video-standby-overlay">
+                            <div class="standby-top">
+                                <span>GIRAFFE V1.0 // 3DS MAX SETUP VIDEO</span>
+                                <span>16:9 HD PLAYER</span>
+                            </div>
+
+                            <div class="standby-center">
+                                <div class="standby-eyebrow">READY FOR YOUR VIDEO</div>
+                                <h3 class="standby-title">3ds Max — Setup &amp; Installation Video</h3>
+                                <p style="font-size: 14px; color: #CCCCCC; line-height: 1.6;">
+                                    Place your video file named <strong>3Dsmax_1.mp4</strong> alongside <strong>index.html</strong>, or paste a YouTube / direct .mp4 link below (or in <strong>VIDEO_SOURCES.max</strong> inside the code) to load it.
+                                </p>
+                                <div class="standby-input-bar">
+                                    <input
+                                        type="url"
+                                        id="max-video-url-input"
+                                        class="standby-url-input"
+                                        placeholder="Paste YouTube URL or direct .mp4 link to preview..."
+                                    />
+                                    <button type="button" class="standby-load-btn" onclick="applyPreviewVideoUrl('max')">
+                                        LOAD VIDEO →
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div class="standby-bottom">
+                                <span>DEFAULT FILE: ./3Dsmax_1.mp4</span>
+                                <span>16:9 FULL HD PLAYER</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="video-bottom-bar">
+                        <div class="video-title-lockup">
+                            <h3>3ds Max — Complete Setup &amp; MCP Connection</h3>
+                            <p>Full video walkthrough covering extraction, installer setup, Autodesk 3ds Max plugin loading, and Gemini MCP connection.</p>
+                        </div>
+                        <div class="video-actions-right">
+                            <a href="#guide" class="btn-small-switch">
+                                VIEW 8-STEP WRITTEN GUIDE ↓
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1686,12 +1730,13 @@
         /* ==========================================================================
            ★ VIDEO CONFIGURATION ★
            --------------------------------------------------------------------------
-           Place `Rhino_1.mp4` and `Revit_1.mp4` in the same folder as `index.html`,
-           or replace with your YouTube / direct .mp4 URLs below:
+           Place `Rhino_1.mp4`, `Revit_1.mp4`, and `3Dsmax_1.mp4` in the same folder 
+           as `index.html`, or replace with your YouTube / direct .mp4 URLs below:
            ========================================================================== */
         var VIDEO_SOURCES = {
             rhino: "Rhino_1.mp4",
-            revit: "Revit_1.mp4"
+            revit: "Revit_1.mp4",
+            max: "3Dsmax_1.mp4"
         };
 
         /* ==========================================================================
@@ -1735,7 +1780,7 @@
 
         /* ==========================================================================
            02. SETUP VIDEO TABS SWITCHER
-           (01 Setup & Install Rhino | 02 Setup & Install Revit | 03 3ds Max Coming Soon)
+           (01 Setup & Install Rhino | 02 Setup & Install Revit | 03 Setup & Install 3ds Max)
            ========================================================================== */
         function switchDocTab(selected) {
             var tabs = ['rhino', 'revit', 'max'];
@@ -1822,6 +1867,7 @@
         window.addEventListener('DOMContentLoaded', function() {
             mountSetupVideo('rhino', VIDEO_SOURCES.rhino);
             mountSetupVideo('revit', VIDEO_SOURCES.revit);
+            mountSetupVideo('max', VIDEO_SOURCES.max);
         });
     </script>
 </body>
